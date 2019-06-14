@@ -22,3 +22,11 @@ index 37ecab5..2bb0627 100644
 +
 +require github.com/kylelemons/godebug v1.1.0 // indirect
 ```
+
+Internally it seems to be invoking:
+
+```
+go list -e -json -compiled=true -test=true -export=false -deps=true -find=false -- fmt github.com/kylelemons/godebug/diff
+```
+
+Which modifies `go.mod` and `go.sum`.
